@@ -13,7 +13,7 @@
 __NumberPicker__ provides an accessibility-compatible number picker for SwiftUI. The user can pick between two views: a number pad and a system numeric keyboard with a text field. NumberPicker will return to the last view the user chose when they invoke the picker again.  
 
 
-![Three screenshots showing NumberPicker in action. The first image shows the number pad and the accessible input field. The second image shows the keyboard view. The third image shows the number pad with Voice Control.](https://github.com/user-attachments/assets/c9faae3b-152a-40f7-8c1a-19e92a73b160)
+![Three screenshots showing NumberPicker in action. The first image shows the number pad and the accessible input field. The second image shows the keyboard view. The third image shows the number pad with Voice Control.](https://github.com/user-attachments/assets/b9648200-e1b8-4bc8-a0eb-9a6b515f5ec5)
 
 ## Content
 
