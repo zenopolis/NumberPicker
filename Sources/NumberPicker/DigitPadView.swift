@@ -17,7 +17,7 @@ public struct DigitPadView: View {
     
     // MARK: - State
 
-    @State private var isLandscape = false
+    @State private var isConstrained = false
     
     @State private var firstKeypress: Bool = true
     @State private var digits: [Int] = []
@@ -54,25 +54,29 @@ public struct DigitPadView: View {
     }
         
     // MARK: - View
-        
+    
     public var body: some View {
-        HStack {
-            VStack {
-                inputField
-                numberPad
-                Spacer()
+        GeometryReader { proxy in
+            
+            let size = proxy.size
+            
+            HStack {
+                VStack {
+                    inputField
+                    numberPad
+                    Spacer()
+                }
+                .padding(.horizontal, 16)
             }
-            .padding(.horizontal, 16)
+            .onAppear {
+                updateProxyChange(proxy)
+            }
+            .onChange(of: size) {
+                updateProxyChange(proxy)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(uiColor: .secondarySystemBackground))
-        .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
-            DispatchQueue.main.async {
-                if UIDevice.current.orientation.isValidInterfaceOrientation {
-                    self.isLandscape = UIDevice.current.orientation.isLandscape
-                }
-            }
-        }
         .onAppear {
             syncDigitsFromWorkingValue()
         }
@@ -140,7 +144,7 @@ public struct DigitPadView: View {
     
     private var numberPad: some View {
         let columns: [GridItem] = Array(repeating: GridItem(.flexible(), spacing: 5), count: 3)
-        return LazyVGrid(columns: columns, spacing: isLandscape ? 2 : 3) {
+        return LazyVGrid(columns: columns, spacing: isConstrained ? 2 : 3) {
             ForEach(1...9, id: \.self) { n in
                 numberButton(n)
             }
@@ -162,7 +166,7 @@ public struct DigitPadView: View {
             Text("\(n)")
                 .font(.system(size: 28)).monospacedDigit()
                 .fixedSize()
-                .padding(.vertical, isLandscape ? -8 : 0)
+                .padding(.vertical, isConstrained ? -8 : 0)
                 .frame(maxWidth: .infinity)
         }
         .buttonStyle(.borderedProminent)
@@ -184,7 +188,7 @@ public struct DigitPadView: View {
         } label: {
             Image(systemName: "delete.left")
                 .font(.system(size: 28))
-                .padding(.vertical, isLandscape ? 1 : 4)
+                .padding(.vertical, isConstrained ? 1 : 4)
                 .frame(maxWidth: .infinity)
         }
         .buttonStyle(.plain)
@@ -198,6 +202,13 @@ public struct DigitPadView: View {
     }
     
     // MARK: - Actions
+    
+    private func updateProxyChange(_ proxy: GeometryProxy) {
+        if UIDevice.current.userInterfaceIdiom != .phone { return }
+        isConstrained = (proxy.ratio == 2)
+    }
+
+    // MARK: Synchronising Values
     
     /// Sync the `digits` array with the individual digits from `workingValue`.
     ///

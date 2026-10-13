@@ -17,7 +17,7 @@ public struct DigitPadSheet: View {
 
     @Environment(\.dismiss) private var dismiss
 
-    @State private var isLandscape = false
+    @State private var isConstrained = false
     
     private var withBackButton = false
     private var onDismiss: ((NumberPicker.DismissalMethod)->Void)?
@@ -52,14 +52,25 @@ public struct DigitPadSheet: View {
 
     public var body: some View {
         NavigationStack {
-            DigitPadView(value: $value) { action in
-                if action == .keyboard {
-                    requestKeyboard()
+            GeometryReader { proxy in
+                
+                let size = proxy.size
+                
+                DigitPadView(value: $value) { action in
+                    if action == .keyboard {
+                        requestKeyboard()
+                    }
+                }
+                .onAppear {
+                    updateProxyChange(proxy)
+                }
+                .onChange(of: size) {
+                    updateProxyChange(proxy)
                 }
             }
             .navigationTitle(Text(title))
             .navigationBarTitleDisplayMode(.inline)
-            .presentationDetents([.height(isLandscape ? 276 + extraHeight : 319 + extraHeight)])
+            .presentationDetents([.height(isConstrained ? 276 + extraHeight : 319 + extraHeight)])
             .presentationCompactAdaptation(.none)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -84,13 +95,6 @@ public struct DigitPadSheet: View {
                     .accessibilityLabel("Done")
                 }
             }
-            .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
-                DispatchQueue.main.async {
-                    if UIDevice.current.orientation.isValidInterfaceOrientation {
-                        self.isLandscape = UIDevice.current.orientation.isLandscape
-                    }
-                }
-            }
             .onDisappear {
                 if let onDismiss {
                     onDismiss(Self.dismissMethod)
@@ -101,6 +105,11 @@ public struct DigitPadSheet: View {
     
     // MARK: - Actions
 
+    private func updateProxyChange(_ proxy: GeometryProxy) {
+        if UIDevice.current.userInterfaceIdiom != .phone { return }
+        isConstrained = (proxy.ratio == 2)
+    }
+    
     private func requestKeyboard() {
         if onDismiss != nil {
 
