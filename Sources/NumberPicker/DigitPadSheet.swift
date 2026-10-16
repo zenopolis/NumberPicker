@@ -9,7 +9,7 @@
 
 import SwiftUI
 
-public struct DigitPadSheet: View {
+struct DigitPadSheet: View {
         
     // MARK: - State
 
@@ -26,11 +26,11 @@ public struct DigitPadSheet: View {
     
     var title: LocalizedStringKey
     @Binding var value: Int?
-    @Binding var activeInputMethod: NumberPicker.InputMethod?
+    @Binding var activeInputMethod: NumberPicker.EntryMethod?
     
     // MARK: - Lifecycle
     
-    public init(title: LocalizedStringKey, value: Binding<Int?>, onDismiss: ((NumberPicker.DismissalMethod)->Void)?) {
+    init(title: LocalizedStringKey, value: Binding<Int?>, onDismiss: ((NumberPicker.DismissalMethod)->Void)?) {
         self._activeInputMethod = .constant(nil)
         self.title = title
         self._value = value
@@ -39,7 +39,7 @@ public struct DigitPadSheet: View {
         Self.dismissMethod = .other
     }
     
-    init(_ activeInputMethod: Binding<NumberPicker.InputMethod?> = .constant(nil), title: LocalizedStringKey, value: Binding<Int?>) {
+    init(_ activeInputMethod: Binding<NumberPicker.EntryMethod?> = .constant(nil), title: LocalizedStringKey, value: Binding<Int?>) {
         self._activeInputMethod = activeInputMethod
         self.title = title
         self._value = value
@@ -50,13 +50,13 @@ public struct DigitPadSheet: View {
         
     @ScaledMetric(relativeTo: .body) private var extraHeight = 21
 
-    public var body: some View {
+    var body: some View {
         NavigationStack {
             GeometryReader { proxy in
                 
                 let size = proxy.size
                 
-                DigitPadView(value: $value) { action in
+                DigitPad(value: $value) { action in
                     if action == .keyboard {
                         requestKeyboard()
                     }
@@ -113,8 +113,8 @@ public struct DigitPadSheet: View {
     private func requestKeyboard() {
         if onDismiss != nil {
 
-            let inputMethod = NumberPicker.InputMethod.keyboard
-            UserDefaults.standard.numberPickerInputMethod = inputMethod
+            let inputMethod = NumberPicker.EntryMethod.keyboard
+            UserDefaults.standard.numberPickerEntryMethod = inputMethod
             
             Self.dismissMethod = .requestKeyboard
             dismiss()

@@ -11,11 +11,11 @@ import Foundation
     
     var isActive: Bool = false
     
-    var inputMethod: NumberPicker.InputMethod? = nil {
+    var entryMethod: NumberPicker.EntryMethod? = nil {
         didSet {
-            isActive = (inputMethod != nil)
-            guard let inputMethod else { return }
-            UserDefaults.standard.numberPickerInputMethod = inputMethod
+            isActive = (entryMethod != nil)
+            guard let entryMethod else { return }
+            UserDefaults.standard.numberPickerEntryMethod = entryMethod
         }
     }
     

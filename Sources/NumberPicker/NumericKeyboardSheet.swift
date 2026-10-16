@@ -9,7 +9,7 @@
 
 import SwiftUI
 
-public struct NumericKeyboardSheet: View {
+struct NumericKeyboardSheet: View {
         
     // MARK: - State
     
@@ -29,11 +29,11 @@ public struct NumericKeyboardSheet: View {
     
     var title: LocalizedStringKey
     @Binding var value: Int?
-    @Binding var activeInputMethod: NumberPicker.InputMethod?
+    @Binding var activeInputMethod: NumberPicker.EntryMethod?
     
     // MARK: - Lifecycle
     
-    public init(title: LocalizedStringKey, value: Binding<Int?>, onDismiss: ((NumberPicker.DismissalMethod)->Void)?) {
+    init(title: LocalizedStringKey, value: Binding<Int?>, onDismiss: ((NumberPicker.DismissalMethod)->Void)?) {
         self._activeInputMethod = .constant(nil)
         self.title = title
         self._value = value
@@ -42,7 +42,7 @@ public struct NumericKeyboardSheet: View {
         Self.dismissMethod = .other
     }
     
-    init(_ activeInputMethod: Binding<NumberPicker.InputMethod?> = .constant(nil), title: LocalizedStringKey, value: Binding<Int?>) {
+    init(_ activeInputMethod: Binding<NumberPicker.EntryMethod?> = .constant(nil), title: LocalizedStringKey, value: Binding<Int?>) {
         self.title = title
         self._value = value
         self._activeInputMethod = activeInputMethod
@@ -51,9 +51,9 @@ public struct NumericKeyboardSheet: View {
 
     // MARK: - View
 
-    public var body: some View {
+    var body: some View {
         NavigationStack {
-            NumericKeyboardView(value: $value) { action in
+            NumericKeyboard(value: $value) { action in
                 if action == .pad {
                     requestDigitPad()
                 }
@@ -98,8 +98,8 @@ public struct NumericKeyboardSheet: View {
     private func requestDigitPad() {
         if onDismiss != nil {
             
-            let inputMethod = NumberPicker.InputMethod.pad
-            UserDefaults.standard.numberPickerInputMethod = inputMethod
+            let inputMethod = NumberPicker.EntryMethod.pad
+            UserDefaults.standard.numberPickerEntryMethod = inputMethod
 
             Self.dismissMethod = .requestDigitPad
             dismiss()
