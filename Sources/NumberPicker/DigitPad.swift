@@ -80,6 +80,14 @@ public struct DigitPad: View {
     
     // MARK: - Lifecycle
     
+    /**
+     Creates an instance that binds to an optional integer.
+     
+     - Parameters:
+        - value: A binding to an optional integer.
+     
+     The `value` binding provides the number entered by the user, returning `nil` if the user deletes or otherwise invalidates the entry.
+     */
     public init(value: Binding<Int?>) {
         self._value = value
         self.withActionRequest = false

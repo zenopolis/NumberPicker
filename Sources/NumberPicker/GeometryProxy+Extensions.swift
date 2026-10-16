@@ -5,6 +5,8 @@
 //  Created by David Kennedy on 13/10/2026.
 //
 
+#if os(iOS)
+
 import SwiftUI
 
 extension GeometryProxy {
@@ -21,3 +23,5 @@ extension GeometryProxy {
     }
     
 }
+
+#endif

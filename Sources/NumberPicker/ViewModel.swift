@@ -5,6 +5,8 @@
 //  Created by David Kennedy on 09/10/2026.
 //
 
+#if os(iOS)
+
 import Foundation
 
 @MainActor @Observable public class ViewModel: @unchecked Sendable {
@@ -20,3 +22,5 @@ import Foundation
     }
     
 }
+
+#endif

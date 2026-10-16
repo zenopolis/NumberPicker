@@ -5,12 +5,14 @@
 //  Created by David Kennedy on 09/10/2026.
 //
 
+#if os(iOS)
+
 import SwiftUI
 
 /**
  A control for the entry of a positive integer value.
  
- Use `NumberPicker` when you want to provide a view that allows the user to enter an arbitrary positive integer with a highly varied range of possible values. The view binds to an `Int?` value, returning `nil` when the user deletes or otherwise invalidates the entry.
+ Use `NumberPicker` when you want to provide a view that allows the user to enter an arbitrary positive integer with a highly varied range of possible values. The picker binds to an `Int?` value, returning `nil` if the user deletes or otherwise invalidates the entry.
   
 The `NumberPicker` API can be imported into your SwiftUI code with the following import statement.
  
@@ -163,3 +165,5 @@ public struct NumberPicker: View {
         Text("Open Number Picker")
     }
 }
+
+#endif

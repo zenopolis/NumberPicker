@@ -40,7 +40,6 @@ The user can choose between two entry methods: a numeric key pad and the system'
 This version of the number picker is designed to work with positive integer values only. 
 ## Installation
 ### Swift Package Manager
-
 You can use the [Swift Package Manager](https://docs.swift.org/latest/documentation/packagemanagerdocs/) to install `NumberPicker` by adding it to your `Package.swift` file:
 
 ```swift
@@ -96,7 +95,6 @@ struct NumberPickerExample: View {
 
 ---
 ### DigitPad and NumericKeyboard Views 
-
 You can also access the views presented by number picker directly.
 The following example directly accesses the `DigitPad` view.
 
