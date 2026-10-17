@@ -14,7 +14,7 @@ __NumberPicker__ provides an accessibility-compatible number picker for SwiftUI 
  
 The user can choose between two entry methods: a numeric digit pad and the system's numeric keyboard. Their previous choice will be remembered and used the next time they use the number picker.
 
-![Three screenshots showing NumberPicker in action. The first image shows the numeric digit pad and the accessible input field. The second image shows the numeric keyboard view. The third image shows the digit pad with Voice Control labels.](https://github.com/user-attachments/assets/b9648200-e1b8-4bc8-a0eb-9a6b515f5ec5)
+![Three screenshots showing NumberPicker in action. The first image shows the numeric digit pad and the accessible input field. The second image shows the numeric keyboard view. The third image shows the digit pad with Voice Control labels.](https://github.com/user-attachments/assets/d2dfaef7-70f4-4bae-91f9-9961ffeec2cf)
 
 ## Content
 
