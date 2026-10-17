@@ -2,7 +2,7 @@
 
 <div align="center">
   
-![version](https://img.shields.io/badge/version-0.1.0_alpha-green) 
+![version](https://img.shields.io/badge/version-0.2.0_alpha-green) 
 ![package manager, swift PM](https://img.shields.io/badge/package_manager-Swift_PM-green)
 ![Apple Platforms, iOS 26+](https://img.shields.io/badge/Platforms-iOS_26+%20-blue.svg?style=flat&logo=apple&logoColor=white)
 ![swift 5](https://img.shields.io/badge/swift-5-blue)
