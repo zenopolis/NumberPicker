@@ -25,7 +25,7 @@ The user can choose between two entry methods: a numeric digit pad and the syste
     - [Swift Package Manager](#swift-package-manager)
     - [Manually](#manually)
 4. [Usage Examples](#usage-examples)
-    - [NumberPicker](#numberpicker)
+    - [NumberPicker](#numberpicker-example)
     - [DigitPad and NumericKeyboard Views](#digitpad-and-numerickeyboard-views)
     - [Number Picker Default](#number-picker-default)
 5. [Author](#author)
@@ -77,7 +77,7 @@ To manually add this library to your project, drag the `Sources` folder into the
 
 ## Usage examples
 
-### NumberPicker
+### <a id="numberpicker-example"></a>NumberPicker
 
 Use the number picker to get an integer value. The following code displays a button – that when pressed – shows the number picker with the user’s preferred entry method.
 
