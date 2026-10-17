@@ -41,12 +41,14 @@ import SwiftUI
      
  }
  ```
-
- ### Reference
+ 
+ ---
+ 
+ ## Developer Reference
  
  * Fatbobman's Blog:  [SwiftUI TextField Advanced — Events, Focus, and Keyboard](https://fatbobman.com/en/posts/textfield-event-focus-keyboard/)
  
- */
+  */
 public struct NumericKeyboard: View {
     
     // MARK: - Constants
@@ -139,17 +141,11 @@ public struct NumericKeyboard: View {
                         syncValueFromText()
                     }
                     .onChange(of: isFocused) {
-                        
                         if isFocused { // select text on appear
-                            
                             selection = TextSelection(range: text.startIndex..<text.endIndex)
-                            
-                        } else { // synchronise and close
-                            
+                        } else { // synchronise on close
                             syncValueFromText()
-                            //activeInputMethod = nil
                         }
-                        
                     }
                 Spacer()
             }

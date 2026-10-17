@@ -14,13 +14,13 @@ import SwiftUI
  
  Use `NumberPicker` when you want to provide a view that allows the user to enter an arbitrary positive integer with a highly varied range of possible values. The picker binds to an `Int?` value, returning `nil` if the user deletes or otherwise invalidates the entry.
   
-The `NumberPicker` API can be imported into your SwiftUI code with the following import statement.
+The `NumberPicker` API can be imported into your SwiftUI code with the following import statement:
  
  ```swift
  import NumberPicker
  ```
  
- The following example creates a basic `NumberPicker`, which appears on iOS as a button. This example limits ???. When the user taps or clicks the button, a digit pad view animates in, from which the user can enter a value. When the user dismisses the digit pad view, the view updates the bound optional integer.
+ The following example creates a basic `NumberPicker`, which appears on iOS as a button. When the user taps or clicks the button, a digit pad view animates in, from which the user can enter a value. When the user dismisses the digit pad view, the view updates the bound optional integer.
  
  ```swift
  @State var value: Int? =  nil
@@ -34,7 +34,7 @@ The `NumberPicker` API can be imported into your SwiftUI code with the following
  
  Typically, you use `NumericPicker` with an existing `Int` value, passing an `Int?` copy of this value to the number picker. This allows the returned value to be validated before accepting it.
  
- The following example uses an integer value for the title for the number picker button. It passes a copy of the value to the number picker, and validates the result when the number picker provides a new value.
+ The following example uses an integer value for the title of the number picker button. It passes a copy of the value to the number picker and validates the result when the number picker provides a new value.
 
 ```swift
  @Binding var value: Int
@@ -79,13 +79,13 @@ public struct NumberPicker: View {
     // MARK: - Properties
     
     /**
-     The last number picker entry method used by the user, one of either the Digital Pad or the Numeric Keyboard.
+     References the last number picker entry method used by the user, which is either the Digit Pad or the Numeric Keyboard.
      
-     This static property provides a direct access to the entryMethod value stored in user defaults.
+     This static property provides direct access to the `entryMethod` value stored in user defaults.
      
      - Returns:
-        - `.pad` if the users last used number picker entry method is the Digital Pad (_default_).
-        - `.keyboard` if the users last used number picker entry method is the Numeric Keyboard.
+        - `.pad` if the users last used number picker entry method was the Digit Pad (_default_).
+        - `.keyboard` if the users last used number picker entry method was the Numeric Keyboard.
      */
     public static var entryMethod: EntryMethod {
         get { return UserDefaults.standard.numberPickerEntryMethod }

@@ -1,4 +1,5 @@
 # NumberPicker
+
 <div align="center">
   
 ![version](https://img.shields.io/badge/version-0.2.0_alpha-green) 
@@ -8,10 +9,15 @@
 ![license MIT](https://img.shields.io/badge/license-MIT-lightgrey)
 
 </div>
-__NumberPicker__ provides an accessibility-compatible number picker for SwiftUI that allows the user to enter an arbitrary positive integer with a highly varied range of possible values. 
-The user can choose between two entry methods: a numeric key pad and the system's numeric keyboard. Thier previous choice will be remembered and used the next time they use the number picker.
+
+__NumberPicker__ provides an accessibility-compatible number picker for SwiftUI that allows the user to enter an arbitrary positive integer with a highly varied range of possible values.
+ 
+The user can choose between two entry methods: a numeric digit pad and the system's numeric keyboard. Their previous choice will be remembered and used the next time they use the number picker.
+
 ![Three screenshots showing NumberPicker in action. The first image shows the numeric digit pad and the accessible input field. The second image shows the numeric keyboard view. The third image shows the digit pad with Voice Control labels.](https://github.com/user-attachments/assets/b9648200-e1b8-4bc8-a0eb-9a6b515f5ec5)
+
 ## Content
+
 1. [Accessibility Support](#accessibility-support)
 2. [Requirements](#requirements)
     - [Current Limitations](#current-limitations)
@@ -24,7 +30,9 @@ The user can choose between two entry methods: a numeric key pad and the system'
     - [Number Picker Default](#number-picker-default)
 5. [Author](#author)
 6. [License](#license)
+
 ## Accessibility Support
+
  * VoiceOver
  * Voice Control
  * Larger Text
@@ -32,14 +40,22 @@ The user can choose between two entry methods: a numeric key pad and the system'
  * Differentiate Without Color Alone
  * Sufficient Contrast
  * Reduced Motion
+
 > __Note__: May not be suitable for Assistive Access.
+
 ## Requirements
+
 - iOS 26+
 - Swift 5+
+
 ### Current Limitations
+
 This version of the number picker is designed to work with positive integer values only. 
+
 ## Installation
+
 ### Swift Package Manager
+
 You can use the [Swift Package Manager](https://docs.swift.org/latest/documentation/packagemanagerdocs/) to install `NumberPicker` by adding it to your `Package.swift` file:
 
 ```swift
@@ -56,10 +72,14 @@ let package = Package(
 ```
 
 ### Manually
+
 To manually add this library to your project, drag the `Sources` folder into the project tree.
+
 ## Usage examples
+
 ### NumberPicker
-Use the number picker to get an integer value. The folowing code displays a button - that when pressed - shows the number picker with the users prefered entry method.
+
+Use the number picker to get an integer value. The following code displays a button – that when pressed – shows the number picker with the user’s preferred entry method.
 
 ``` swift
 
@@ -94,8 +114,11 @@ struct NumberPickerExample: View {
 ```
 
 ---
-### DigitPad and NumericKeyboard Views 
-You can also access the views presented by number picker directly.
+
+### DigitPad and NumericKeyboard Views
+
+You can also access the views presented by the number picker directly. 
+
 The following example directly accesses the `DigitPad` view.
 
 ``` swift
@@ -125,12 +148,14 @@ struct DigitPadExample: View {
 }
 ```
 
-To use the `NumericKeyboard` view, replace `DigitPad(value: $newValue)` in the example, with `NumericKeyboard(value: $newValue)`.
+To use the `NumericKeyboard` view, replace `DigitPad(value: $newValue)` in the example with `NumericKeyboard(value: $newValue)`.
 
 ---
+
 ### Number Picker Default
+
 `NumberPicker` stores the entry method, either `.pad` or `.keyboard`, the user last used when they invoked the number picker. When they next use the picker, the same entry method is presented. 
-The entry method value is stored in user defaults, and can be accessed via the `entryMethod` static propery.
+The entry method value is stored in user defaults and can be accessed via the `entryMethod` static propery.
 
 ```swift
 
@@ -140,7 +165,11 @@ let entryMethod = NumberPicker.entryMethod
 // Set default
 NumberPicker.entryMethod = .pad
 ```
+
 ## Author
+
 __NumberPicker__ was created by [David Kennedy](https://zenopolis.com/contact/).
+
 ## License
+
 __NumberPicker__ is available under the MIT license. See the LICENSE file for more info.
