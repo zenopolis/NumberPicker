@@ -68,7 +68,7 @@ let package = Package(
     name: "NumberPicker",
     targets: [],
     dependencies: [
-        .Package(url: "https://github.com/zenopolis/NumberPicker", from: "0.2.0"),
+        .Package(url: "https://github.com/zenopolis/NumberPicker", from: "0.2.1"),
     ]
 )
 ```
