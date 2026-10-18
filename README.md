@@ -10,11 +10,13 @@
 
 </div>
 
-__NumberPicker__ provides an accessibility-compatible number picker for SwiftUI that allows the user to enter an arbitrary positive integer with a highly varied range of possible values.
- 
-The user can choose between two entry methods: a numeric digit pad and the system's numeric keyboard. Their previous choice will be remembered and used the next time they use the number picker.
+__NumberPicker__ provides an accessibility-compatible SwiftUI control that lets the user enter a numeric value using either a keypad or the system keyboard.
 
-![Three screenshots showing NumberPicker in action. The first image shows the numeric digit pad and the accessible input field. The second image shows the numeric keyboard view. The third image shows the digit pad with Voice Control labels.](https://github.com/user-attachments/assets/d2dfaef7-70f4-4bae-91f9-9961ffeec2cf)
+The number picker will remember the user’s preferred entry method between uses.
+
+__Usage:__ A Stepper control is usually chosen for small, limited adjustments, but it is less suitable for values that may change by large or arbitrary amounts. NumberPicker can assist here, either alongside a Stepper or as a substitute when the user needs more free range over their input.
+
+![Three screenshots showing the number picker in action. The first image shows the keypad entry. The second image shows numeric keyboard entry. The third image shows the keypad entry with Voice Control labels.](https://github.com/user-attachments/assets/d2dfaef7-70f4-4bae-91f9-9961ffeec2cf)
 
 ## Content
 
