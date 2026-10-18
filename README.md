@@ -81,7 +81,9 @@ To manually add this library to your project, drag the `Sources` folder into the
 
 ### <a id="numberpicker-example"></a>NumberPicker
 
-Use the number picker to get an integer value. The following code displays a button – that when pressed – shows the number picker with the user’s preferred entry method.
+Using the number picker to get an integer value. 
+
+The following code displays a button – that when pressed – shows the number picker with the user’s preferred entry method.
 
 ``` swift
 
