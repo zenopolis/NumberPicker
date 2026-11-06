@@ -180,7 +180,7 @@ public struct NumericKeyboard: View {
     }
     
     private func decrementValue() {
-        guard let value, value > 0 else { return }
+        guard let value, value > 1 else { return }
         self.value = value - 1
         syncTextFromValue()
     }
