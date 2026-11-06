@@ -56,6 +56,8 @@ public struct DigitPad: View {
     @State private var digits: [Int] = []
     @State private var isNegative: Bool = false
     
+    @AccessibilityFocusState var isNewlyFocused: Bool
+    
     private var withActionRequest = false
     private var onActionRequest: ((NumberPicker.ActionRequest)->Void)?
         
@@ -125,6 +127,7 @@ public struct DigitPad: View {
         .background(Color(uiColor: .secondarySystemBackground))
         .onAppear {
             syncDigitsFromWorkingValue()
+            isNewlyFocused = true
         }
         .onChange(of: value) {
             syncDigitsFromWorkingValue()
@@ -171,6 +174,7 @@ public struct DigitPad: View {
                 onActionRequest(.keyboard)
             }
         }
+        .accessibilityFocused($isNewlyFocused)
     }
         
     private func tokenView(_ text: String) -> some View {
