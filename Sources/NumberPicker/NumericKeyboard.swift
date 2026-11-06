@@ -94,7 +94,7 @@ public struct NumericKeyboard: View {
         self.withActionRequest = false
     }
 
-    init(value: Binding<Int?>, onActionRequest: ((NumberPicker.ActionRequest)->Void)? = nil) {
+    public init(value: Binding<Int?>, onActionRequest: ((NumberPicker.ActionRequest)->Void)? = nil) {
         self._value = value
         self.onActionRequest = onActionRequest
         self.withActionRequest = (onActionRequest != nil)
